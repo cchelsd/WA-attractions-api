@@ -28,9 +28,9 @@ const mysql = require("mysql");
 const mysqlConfig = {
     host: "localhost", 
     port: 3306,
-    user: "testuser", 
-    password: "mypassword",
-    database: "attractionsdb",
+    user: "",
+    password: "",
+    database: "",
     debug: false // Connection debugging mode is ON
 };
 
