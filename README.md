@@ -13,4 +13,4 @@ The Washington Attractions API is a comprehensive tool that provides access to a
 ## Usage
 1. Enter `npm start` in the console of the 'backend' directory to start the program.
 2. The API can be used through API testing tools such as Postman or Thunder Client.
-3. The API endpoints and its functionalities can be found through the Washington Attraction API documentation web app (a4.html).
+3. The API endpoints and its functionalities can be found through the Washington Attraction API documentation web app (index.html).

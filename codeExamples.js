@@ -1,5 +1,5 @@
 /**
- * Defines example JSON data which is appended to the various endpoint sections in a4.html
+ * Defines example JSON data which is appended to the various endpoint sections in index.html
  */
 
 const exampleJSONData = {
