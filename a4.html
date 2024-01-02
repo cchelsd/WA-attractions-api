@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Washington Attractions API Documentation </title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.3.2/flatly/bootstrap.min.css">
+        <link rel="stylesheet" href="style.css"/>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="index.js"></script>
+        <script src="codeExamples.js"></script>   
+    </head>
+
+    <header>
+        <img src="images/logo.png" alt="logo" id="logo">
+        <img src="images/name-logo.png" alt="name logo" id="nameLogo">
+    </header>
+
+    <div id="verticalMenu">
+        <ul class="nav nav-pills flex-column" id="myTab" role="tablist">
+            <li class="nav-item"><a class="nav-link active" id="overviewTab" data-bs-toggle="pill" href="#overviewContent" role="tab" aria-controls="allAttractions" aria-selected="true"><h5>Overview</h5></a></li>
+            <li class="nav-item"><a class="nav-link" id="attractionsInfoTab" data-bs-toggle="pill" href="#attractionsInfoContent" role="tab" aria-controls="allAttractions" aria-selected="false"><h5>Attractions Information</h5></a></li>
+            <li class="nav-item"><a class="nav-link" id="allAttractionsTab" data-bs-toggle="pill" href="#allAttractionsContent" role="tab" aria-controls="allAttractions" aria-selected="false">All Attractions</a></li>
+            <li class="nav-item"><a class="nav-link" id="byCityTab" data-bs-toggle="pill" href="#byCityContent" role="tab" aria-controls="byCity" aria-selected="false">Attractions by City</a></li>
+            <li class="nav-item"><a class="nav-link" id="byCategoryTab" data-bs-toggle="pill" href="#byCategoryContent" role="tab" aria-controls="byCategory" aria-selected="false">Attractions by Category</a></li>
+            <li class="nav-item"><a class="nav-link" id="bySubcategoryTab" data-bs-toggle="pill" href="#bySubcategoryContent" role="tab" aria-controls="bySubcategory" aria-selected="false">Attractions by Subcategory</a></li>
+            <li class="nav-item"><a class="nav-link" id="mustVisitTab" data-bs-toggle="pill" href="#mustVisitContent" role="tab" aria-controls="mustVisit" aria-selected="false">Must-Visit Attractions</a></li>
+            <li class="nav-item"><a class="nav-link" id="mustVisitCategoryTab" data-bs-toggle="pill" href="#mustVisitCategoryContent" role="tab" aria-controls="mustVisit" aria-selected="false">Must-Visit Attractions by Category</a></li>
+            <li class="nav-item"><a class="nav-link" id="hiddenGemsTab" data-bs-toggle="pill" href="#hiddenGemsContent" role="tab" aria-controls="hiddenGem" aria-selected="false">Hidden Gem Attractions</a></li>
+            <li class="nav-item"><a class="nav-link" id="hiddenGemsCategoryTab" data-bs-toggle="pill" href="#hiddenGemsCategoryContent" role="tab" aria-controls="hiddenGemCategory" aria-selected="false">Hidden Gem Attractions by Category</a></li>
+            <li class="nav-item"><a class="nav-link" id="similarTab" data-bs-toggle="pill" href="#similarContent" role="tab" aria-controls="similar" aria-selected="false">Similar Attractions</a></li>
+            <li class="nav-item"><a class="nav-link" id="nearbyTab" data-bs-toggle="pill" href="#nearbyContent" role="tab" aria-controls="nearby" aria-selected="false">Nearby Attractions</a></li>
+            <li class="nav-item"><a class="nav-link" id="randomTab" data-bs-toggle="pill" href="#randomContent" role="tab" aria-controls="random" aria-selected="false">Random Attraction Generator</a></li>
+            <li class="nav-item"><a class="nav-link" id="attractionDetailsTab" data-bs-toggle="pill" href="#attractionDetailsContent" role="tab" aria-controls="allAttractions" aria-selected="false"><h5>Attraction Details & Media</h5></a></li>
+            <li class="nav-item"><a class="nav-link" id="basicInfoTab" data-bs-toggle="pill" href="#basicInfoContent" role="tab" aria-controls="random" aria-selected="false">Attraction Basic Info</a></li>
+            <li class="nav-item"><a class="nav-link" id="detailedTab" data-bs-toggle="pill" href="#detailedContent" role="tab" aria-controls="random" aria-selected="false">Attraction Detailed Info</a></li>
+            <li class="nav-item"><a class="nav-link" id="nearbyDetailedTab" data-bs-toggle="pill" href="#nearbyDetailedContent" role="tab" aria-controls="random" aria-selected="false">Nearby Attractions Detailed Info</a></li>
+            <li class="nav-item"><a class="nav-link" id="similarDetailedTab" data-bs-toggle="pill" href="#similarDetailedContent" role="tab" aria-controls="random" aria-selected="false">Similar Attractions Detailed Info</a></li>
+            <li class="nav-item"><a class="nav-link" id="imagesTab" data-bs-toggle="pill" href="#imagesContent" role="tab" aria-controls="random" aria-selected="false">Attraction Images</a></li>
+            <li class="nav-item"><a class="nav-link" id="videosTab" data-bs-toggle="pill" href="#videosContent" role="tab" aria-controls="random" aria-selected="false">Attraction Videos</a></li>
+        </ul>
+    </div>
+
+    <div class="mainDoc tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="overviewContent" role="tabpanel" aria-labelledby="overviewTab">
+            <h2>Overview</h2>
+            <p>The Washington Attractions API is a comprehensive tool that provides access to a diverse array of attractions in Washington state. 
+                Divided into two core services, this API provides details, multimedia content, and tailored queires to enrich the user experience 
+                in discovering and understanding Washington attractions.</p>
+            </p>
+
+            <h4>Key features</h4>
+            <ul>
+                <li><strong>Comprehensive Access: </strong>Access a wide range of attractions in Washington state through a variety of tailored queries.</li>
+                <li><strong>Detailed Insights: </strong>Gain in-depth information about attractions, which may include historical significance, architectural features, and multimedia content.</li>
+                <li><strong>Enchanced Exploration: </strong>Facilitate exploration via random discover, highlights, proximity-based recommendations, and similarity queries.</li>
+                <li><strong>Multimedia Integration: </strong>Access collections of photos and videos showcasing the attractions.</li>
+            </ul>
+        </div>
+
+        <!-- ATTRACTIONS INFO OVERVIEW -->
+        <div class="tab-pane fade" id="attractionsInfoContent" role="tabpanel" aria-labelledby="attractionsInfoTab">
+            <h2>Attractions Explorer: Attractions Information</h2>
+            <p>This service provides comprehensive access to attractions in Washington state, offering a variety of endpoints to discover attractions by city, category, or unique features 
+                like must-visit highlights or underrated hidden gems. It also facilitates exploration through random selections and nearby location queries. The primary focus 
+                is on retrieving information about tourist attractions based on various criteria.</p>
+            <h4>Root Endpoint</h4>
+            <code>http://localhost:3000/attractions</code>
+
+            <h4>Endpoints</h4>
+            <table class="table response-fields endpoints-table">
+                <thead>
+                    <tr><th scope="col">Service Endpoint</th><th scope="col">HTTP Method</th><th scope="col">Functionality</th></tr>
+                </thead>  
+                <tbody>
+                    <tr><td scope="row">http://localhost:3000/attractions</td>
+                        <td colspan="2" class="split">
+                            <table class="table response-fields nested-table">
+                                <tr><td>GET</td><td>Provides a collection of attractions in Washington state with basic info such as name, description, location, etc.</td></tr>
+                                <tr><td>POST</td><td>Allows to add an attraction to the collection.</td></tr>  
+                            </table>
+                        </td>
+                    </tr>
+                    <tr><td scope="row">http://localhost:3000/city/{city}</td><td>GET</td><td>Provides a collection of attractions in the specified city.</td></tr>
+                    <tr><td scope="row">http://localhost:3000/attractions/category/{category}</td><td>GET</td><td>Provides a collection of attractions of the specified category (e.g. Natural, Adventure).</td></tr>
+                    <tr><td scope="row">http://localhost:3000/attractions/subcategory/{subcategory}</td><td>GET</td><td>Provides a collection of attractions of the specified subcategory (e.g. Museums, Landscapes).</td></tr>
+                    <tr><td scope="row">http://localhost:3000/attractions/highlights</td><td>GET</td><td>Provides a collection of must-visit attractions.</td></tr>
+                    <tr><td scope="row">http://localhost:3000/attractions/highlights/{category}</td><td>GET</td><td>Provides a collection of must-visit attractions of the specified category.</td></tr>
+                    <tr><td scope="row">http://localhost:3000/attractions/hiddenGems</td><td>GET</td><td>Provides a collection of hidden-gem (i.e. underrated) attractions.</td></tr>
+                    <tr><td scope="row">http://localhost:3000/attractions/hiddenGems/{category}</td><td>GET</td><td>Provides a collection of hidden-gem (i.e. underrated) attractions of the specified category.</td></tr>
+                    <tr><td scope="row">http://localhost:3000/attractions/similar/{attraction_id}</td><td>GET</td><td>Provides a collection of attractions similar to the specified attraction (given by ID).</td></tr>
+                    <tr><td scope="row">http://localhost:3000/attractions/nearby/{location}</td><td>GET</td><td>Provides a collection of attractions near the specified location.</td></tr>
+                    <tr><td scope="row">http://localhost:3000/attractions/random</td><td>GET</td><td>Generates a random attraction in Washington State.</td></tr>
+                </tbody>
+            </table>
+
+            <h4>Response Fields</h4>
+            <table class="table response-fields">
+                <thead>
+                    <tr><th scope="col">Field</th><th scope="col">Type</th><th scope="col">Description</th></tr>
+                </thead>  
+                <tbody>
+                    <tr><th scope="row">id</th><td>int</td><td>unique id of the attraction in the database</td></tr>
+                    <tr><th scope="row">name</th><td>text</td><td>name of the attraction</td></tr>
+                    <tr><th scope="row">category</th><td>text</td><td>category of the attraction (e.g. historical, natural)</td></tr>
+                    <tr><th scope="row">subcategory</th><td>text</td><td>subcategory of the attraction (e.g. museum, landscape)</td></tr>
+                    <tr><th scope="row">description</th><td>text</td><td>a brief description of the attraction</td></tr>
+                    <tr><th scope="row">location</th><td>text</td><td>the city or area the attraction is located</td></tr>
+                    <tr><th scope="row">latitude</th><td>int</td><td>the latitude coordinate of the attraction</td></tr>
+                    <tr><th scope="row">longitude</th><td>int</td><td>the longitude coordinate of the attraction</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ALL ATTRACTIONS TAB CONTENT -->
+        <div class="tab-pane fade" id="allAttractionsContent" role="tabpanel" aria-labelledby="allAttractionsTab">
+            <h2>All Attractions</h2>
+            <p>Provides a collection of attractions in Washington state with basic info such as name, description, location, etc.</p>
+            <div class="endpoint">
+                <div class="http-methods">
+                    <div class="get http-method"><p>Get</p></div>
+                    <div class="post http-method"><p>Post</p></div>
+                </div>
+                <code>
+                    http://localhost:3000/attractions
+                </code>
+            </div>
+
+            <div id="example">
+                <h4>Example Request and Response</h4>
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link active" data-bs-toggle="tab" href="#getAll" aria-selected="true" role="tab">GET</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" data-bs-toggle="tab" href="#postAll" aria-selected="false" role="tab">POST</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane fade show active" id="getAll" role="tabpanel">
+                    <div class="codeExample">
+                        <code class="request">
+                            http://localhost:3000/attractions
+                        </code>        
+                        <pre>
+                            <code class="response"><!-- Code inserted through codeExample.js --></code>
+                        </pre>
+                    </div>     
+                </div>
+                <div class="tab-pane fade" id="postAll" role="tabpanel">
+                    <div class="codeExample">
+                        <code class="request">
+                            http://localhost:3000/attractions
+                        </code>     
+                        <div class="body-code">
+                            <pre><code class="response">
+                                BODY EXAMPLE:
+
+                                    {
+                                        "name": "Riverfront Park",
+                                        "category": "Urban",
+                                        "subcategory": "Amusement Parks",
+                                        "description": "A scenic urban park with a variety 
+                                            of attractions, including the Spokane Falls, 
+                                            walking trails, and the iconic Pavilion. The park 
+                                            hosts events throughout the year and offers a 
+                                            peaceful retreat in the heart of Spokane.",
+                                        "location": "Spokane",
+                                        "latitude": 47.6625,
+                                        "longitude": -117.42,
+                                        "must_visit": 0,
+                                        "hidden_gem": 0
+                                    }
+                            </code></pre>
+                        </div>   
+                        <div class="post-response">
+                            <pre><code class="response">  
+                                RESPONSE:
+                                
+                                    // A successful response
+                                    {
+                                        "id": 55,
+                                        "Success": "Successful: Record was added!."
+                                    }   
+                                      
+                                    // Response if record with the same name already exists
+                                    {
+                                        "Error": "Record already exists with this name."
+                                    }
+                            </code></pre>
+                        </div>           
+                    </div>   
+                </div> 
+            </div>                           
+        </div>        
+
+        <!-- ATTRACTIONS BY CITY TAB CONTENT -->
+        <div class="tab-pane fade" id="byCityContent" role="tabpanel" aria-labelledby="byCityTab">
+            <h2>Attractions by City</h2>
+            <p>Provides a collection of attractions in the specified city.</p>
+            <div class="get http-method"><p>Get</p></div>
+            <code>
+                http://localhost:3000/attractions/city/{city}
+            </code>
+
+            <h4>Parameter</h4>
+            <table class="table parameter-table">
+                <thead>
+                    <tr><th scope="col">Field</th><th scope="col">Type</th><th scope="col">Description</th><th scope="col">Valid Values</th></tr>
+                </thead>  
+                <tbody>
+                    <tr>
+                        <th scope="row">city</th>
+                        <td>text</td>
+                        <td>name of the city</td>
+                        <td>
+                            Notes:
+                            <ul>
+                                <li>When entering a value of multiple words, enter a '-', '_', or a space between words (e.g. Port Angeles or Port_Angeles, etc., PortAngeles is not valid).</li>
+                                <li>Case insensitive, i.e. 'port Angeles' or 'Port angeles' are both valid.</li>
+                            </ul>                     
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>Example Request and Response</h4>
+            <div class="codeExample">
+                <code class="request">
+                    http://localhost:3000/attractions/city/Seattle 
+                </code>        
+                <pre>
+                    <code class="response"><!-- Code inserted through codeExample.js --></code>
+                </pre>
+            </div>     
+        </div>
+
+        <!-- ATTRACTIONS BY CATEGORY TAB CONTENT -->
+        <div class="tab-pane fade" id="byCategoryContent" role="tabpanel" aria-labelledby="byCategoryTab">
+            <h2>Attractions by Category</h2>
+            <p>Provides a collection of attractions of the specified category (e.g. Natural, Adventure).</p>
+            <div class="get http-method"><p>Get</p></div>
+            <code>
+                http://localhost:3000/attractions/category/{category}
+            </code>
+
+            <h4>Parameter</h4>
+            <table class="table parameter-table">
+                <thead>
+                    <tr><th scope="col">Field</th><th scope="col">Type</th><th scope="col">Description</th><th scope="col">Valid Values</th></tr>
+                </thead>  
+                <tbody>
+                    <tr>
+                        <th scope="row">category</th>
+                        <td>text</td>
+                        <td>name of the category</td>
+                        <td>
+                            <ul>
+                                <li>Natural</li>
+                                <li>Cultural and Historical</li>
+                                <li>Adventure</li>
+                                <li>Urban</li>
+                            </ul>
+                            Notes:
+                            <ul>
+                                <li>When entering a value of multiple words, enter a special character or a space between words (e.g. Cultural And Historic or Cultural_And_Historic, etc., CulturalAndHistoric is not valid).</li>
+                                <li>Case insensitive, i.e. 'natural' or 'Natural' are both valid.</li>
+                            </ul>                    
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>Example Request and Response</h4>
+            <div class="codeExample">
+                <code class="request">
+                    http://localhost:3000/attractions/category/Natural 
+                </code>        
+                <pre>
+                    <code class="response"><!-- Code inserted through codeExample.js --></code>
+                </pre>
+            </div>     
+        </div>
+
+         <!-- ATTRACTIONS BY SUBCATEGORY TAB CONTENT -->
+        <div class="tab-pane fade" id="bySubcategoryContent" role="tabpanel" aria-labelledby="bySubcategoryTab">
+            <h2>Attractions by Subcategory</h2>
+            <p>Provides a collection of attractions of the specified subcategory (e.g. Museums, Landscapes).</p>
+            <div class="get http-method"><p>Get</p></div>
+            <code>
+                http://localhost:3000/attractions/subcategory/{subcategory}
+            </code>
+
+            <h4>Parameter</h4>
+            <table class="table parameter-table">
+                <thead>
+                    <tr><th scope="col">Field</th><th scope="col">Type</th><th scope="col">Description</th><th scope="col">Valid Values</th></tr>
+                </thead>  
+                <tbody>
+                    <tr>
+                        <th scope="row">subcategory</th>
+                        <td>text</td>
+                        <td>name of the subcategory</td>
+                        <td>
+                            <div class="list-container">
+                                <ul class="left-column">
+                                  <li>Landscapes</li>
+                                  <li>Parks and Reserves</li>
+                                  <li>Beaches</li>
+                                  <li>Waterfalls</li>
+                                  <li>Caves</li>
+                                  <li>Museums</li>
+                                  <li>Historical Sites</li>
+                                  <li>Archaeological Sites</li>
+                                </ul>
+                                <ul class="right-column">
+                                  <li>Hiking and Trekking</li>
+                                  <li>Skiing</li>
+                                  <li>Water Sports</li>
+                                  <li>Adventure Parks</li>
+                                  <li>Towers</li>
+                                  <li>Shopping</li>
+                                  <li>Amusement Parks</li>
+                                </ul>
+                            </div>
+                            Notes:
+                            <ul>
+                                <li>When entering a value of multiple words, enter a special character or a space between words (e.g. Historical Sites or Historical-Sites, etc., HistoricalSites is not valid).</li>
+                                <li>Case insensitive, i.e. 'parks and reserves' or 'parks And Reserves' are both valid.</li>
+                            </ul>                    
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>Example Request and Response</h4>
+            <div class="codeExample">
+                <code class="request">
+                    http://localhost:3000/attractions/subcategory/historical sites 
+                </code>        
+                <pre>
+                    <code class="response"><!-- Code inserted through codeExample.js --></code>
+                </pre>
+            </div>     
+        </div>
+
+        <!-- MUST-VISIT ATTRACTIONS TAB CONTENT -->
+        <div class="tab-pane fade" id="mustVisitContent" role="tabpanel" aria-labelledby="mustVisitTab">
+            <h2>Must-Visit Attractions</h2>
+            <p>Provides a collection of must-visit attractions.</p>
+            <div class="get http-method"><p>Get</p></div>
+            <code>
+                http://localhost:3000/attractions/highlights
+            </code>
+
+            <h4>Example Request and Response</h4>
+            <div class="codeExample">
+                <code class="request">
+                    http://localhost:3000/attractions/highlights
+                </code>        
+                <pre>
+                    <code class="response"><!-- Code inserted through codeExample.js --></code>
+                </pre>
+            </div>     
+        </div>
+
+        <!-- MUST-VISIT ATTRACTIONS BY CATEGORY TAB CONTENT -->
+        <div class="tab-pane fade" id="mustVisitCategoryContent" role="tabpanel" aria-labelledby="mustVisitCategoryTab">
+            <h2>Must-Visit Attractions by Category</h2>
+            <p>Provides a collection of must-visit attractions of the specified category.</p>
+            <div class="get http-method"><p>Get</p></div>
+            <code>
+                http://localhost:3000/attractions/highlights/{category}
+            </code>
+
+            <h4>Example Request and Response</h4>
+            <div class="codeExample">
+                <code class="request">
+                    http://localhost:3000/attractions/highlights/urban
+                </code>        
+                <pre>
+                    <code class="response"><!-- Code inserted through codeExample.js --></code>
+                </pre>
+            </div>     
+        </div>
+
+        <!-- HIDDEN GEM ATTRACTIONS TAB CONTENT -->
+        <div class="tab-pane fade" id="hiddenGemsContent" role="tabpanel" aria-labelledby="hiddenGemsTab">
+            <h2>Hidden Gem Attractions</h2>
+            <p>Provides a collection of hidden-gem (i.e. underrated) attractions.</p>
+            <div class="get http-method"><p>Get</p></div>
+            <code>
+                http://localhost:3000/attractions/hiddenGems
+            </code>
+
+            <h4>Example Request and Response</h4>
+            <div class="codeExample">
+                <code class="request">
+                    http://localhost:3000/attractions/hiddenGems
+                </code>        
+                <pre>
+                    <code class="response"><!-- Code inserted through codeExample.js --></code>
+                </pre>
+            </div>     
+        </div>
+
+        <!-- HIDDEN GEM ATTRACTIONS BY CATEGORY TAB CONTENT -->
+        <div class="tab-pane fade" id="hiddenGemsCategoryContent" role="tabpanel" aria-labelledby="hiddenGemsCategoryTab">
+            <h2>Hidden Gem Attractions by Category</h2>
+            <p>Provides a collection of hidden-gem (i.e. underrated) attractions of the specified category.</p>
+            <div class="get http-method"><p>Get</p></div>
+            <code>
+                http://localhost:3000/attractions/hiddenGems/{category}
+            </code>
+
+            <h4>Example Request and Response</h4>
+            <div class="codeExample">
+                <code class="request">
+                    http://localhost:3000/attractions/hiddenGems/Adventure
+                </code>        
+                <pre>
+                    <code class="response"><!-- Code inserted through codeExample.js --></code>
+                </pre>
+            </div>     
+        </div>
+
+        <!-- SIMILAR ATTRACTIONS TAB CONTENT -->
+        <div class="tab-pane fade" id="similarContent" role="tabpanel" aria-labelledby="similarTab">
+            <h2>Similar Attractions</h2>
+            <p>Provides a collection of attractions similar to the specified attraction (given by ID).
+                ID's are provided in request responses. Use 'All Attractions' endpoint to find ID if needed.
+            </p>
+            <div class="get http-method"><p>Get</p></div>
+            <code>
+                http://localhost:3000/attractions/similar/{attraction_id}
+            </code>
+
+            <h4>Parameter</h4>
+            <table class="table parameter-table">
+                <thead>
+                    <tr><th scope="col">Field</th><th scope="col">Type</th><th scope="col">Description</th><th scope="col">Valid Values</th></tr>
+                </thead>  
+                <tbody>
+                    <tr>
+                        <th scope="row">attraction_id</th>
+                        <td>int</td>
+                        <td>the ID of the attraction</td>
+                        <td>A valid ID from the database. Make a request to the All Attractions endpoint to see all of the available attractions, and their unique ID's in the database.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>Example Request and Response</h4>
+            <div class="codeExample">
+                <code class="request">
+                    http://localhost:3000/attractions/similar/46 (46 corresponds to the Space Needle)
+                </code>        
+                <pre>
+                    <code class="response"><!-- Code inserted through codeExample.js --></code>
+                </pre>
+            </div>     
+        </div>
+
+        <!-- NEARBY ATTRACTIONS TAB CONTENT -->
+        <div class="tab-pane fade" id="nearbyContent" role="tabpanel" aria-labelledby="nearbyTab">
+            <h2>Nearby Attractions</h2>
+            <p>Provides a collection of attractions near the specified location.</p>
+            <div class="get http-method"><p>Get</p></div>
+            <code>
+                http://localhost:3000/attractions/nearby/{location}
+            </code>
+
+            <h4>Parameter</h4>
+            <table class="table parameter-table">
+                <thead>
+                    <tr><th scope="col">Field</th><th scope="col">Type</th><th scope="col">Description</th><th scope="col">Valid Values</th></tr>
+                </thead>  
+                <tbody>
+                    <tr>
+                        <th scope="row">location</th>
+                        <td>text</td>
+                        <td>the location of where you want to find nearby attractions</td>
+                        <td>Locations within Washington (state). It can be a city, county, zip code, area, address, building, etc. For example,
+                            Tacoma, King County, 98003, Space Needle, and 1900 Commerce St, are all valid values.<br>    
+                            Notes:
+                            <ul>
+                                <li>When entering a value of multiple words, enter a '-', '_', or a space between words (e.g. Federal Way or Federal_Way, etc., FederalWay is not valid).</li>
+                                <li>Case insensitive, i.e. 'seattle' or 'Seattle' are both valid.</li>
+                            </ul>  
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>Example Request and Response</h4>
+            <div class="codeExample">
+                <code class="request">
+                    http://localhost:3000/attractions/nearby/98003
+                </code>        
+                <pre>
+                    <code class="response"><!-- Code inserted through codeExample.js --></code>
+                </pre>
+            </div>     
+        </div>
+
+        <!-- RANDOM ATTRACTION GENERATOR TAB CONTENT -->
+        <div class="tab-pane fade" id="randomContent" role="tabpanel" aria-labelledby="randomTab">
+            <h2>Random Attraction Generator</h2>
+            <p>Provides a collection of attractions near the specified location.</p>
+            <div class="get http-method"><p>Get</p></div>
+            <code>
+                http://localhost:3000/attractions/random
+            </code>
+
+            <h4>Example Request and Response</h4>
+            <div class="codeExample">
+                <code class="request">
+                    http://localhost:3000/attractions/random
+                </code>        
+                <pre>
+                    <code class="response"><!-- Code inserted through codeExample.js --></code>
+                </pre>
+            </div>     
+        </div>
+
+        <!------------------------------------------------ WEB SERVICE 2 ------------------------------------------------->
+
+        <!-- ATTRACTIONS DETAILS AND MEDIA OVERVIEW -->
+        <div class="tab-pane fade" id="attractionDetailsContent" role="tabpanel" aria-labelledby="attractionDetailsTab">
+            <h2>Attraction Insight: Attraction Details & Media</h2>
+            <p>This service offers comprehensive details about individual attractions in Washington, providing insights into topics such as their history, architecture, 
+                notable events. Other information such as contact info and addresses are offered as well. It also enriches exploration by showcasing nearby attractions and similar points of interest while offering a visual journey through 
+                a collection of attraction photos and videos.</p>
+            <h4>Root Endpoint</h4>
+            <code>http://localhost:3000/attractions/{attraction_id}</code>
+
+            <h4>Endpoints</h4>
+            <table class="table response-fields endpoints-table" id="webService2Table">
+                <thead>
+                    <tr><th scope="col">Service Endpoint</th><th scope="col">HTTP Method</th><th scope="col">Functionality</th></tr>
+                </thead>  
+                <tbody>
+                    <tr><td scope="row">http://localhost:3000/attractions/{attraction_id}</td>
+                        <td colspan="2" class="split">
+                            <table class="table response-fields nested-table">
+                                <tr><td>GET</td><td>Provides basic info (data from Attractions Information service) about a specified attraction.</td></tr>
+                                <tr><td>PUT</td><td>Update basic info for the specified attraction.</td></tr>
+                                <tr><td>POST</td><td>Removes the specified attraction from the database.</td></tr>  
+                            </table>
+                        </td>
+                    </tr>
+                    <tr><td scope="row">http://localhost:3000/attractions/{attraction_id}/details</td>
+                        <td colspan="2" class="split">
+                            <table class="table response-fields nested-table">
+                                <tr><td>GET</td><td>Provides comprehensive details about a specific attraction such as the contact info, address, history and notable events.</td></tr>
+                                <tr><td>PUT</td><td>Update the details of a specific attraction.</td></tr>
+                                <tr><td>POST</td><td>Allows to add an attraction to the collection of attraction details.</td></tr>  
+                            </table>
+                        </td>
+                    </tr>
+                    <tr><td scope="row">http://localhost:3000/attractions/{attraction_id}/details/nearby</td><td id="notNested">GET</td><td>Provides a collection of details of attractions near the specified attraction.</td></tr>
+                    <tr><td scope="row">http://localhost:3000/attractions/{attraction_id}/details/similar</td><td id="notNested">GET</td><td>Provides a collection of details of attractions similar to the specified attraction.</td></tr>
+                    <tr><td scope="row">http://localhost:3000/attractions/{attraction_id}/photos</td>
+                        <td colspan="2" class="split">
+                            <table class="table response-fields nested-table">
+                                <tr><td>GET</td><td>Provides a collection of photos for a specific attraction.</td></tr>
+                                <tr><td>PUT</td><td>Update/add to the already existing photos for a specific attraction.</td></tr>
+                                <tr><td>POST</td><td>Allows to add photos for a specific attraction.</td></tr>  
+                            </table>
+                        </td>
+                    </tr>
+                    <tr><td scope="row">http://localhost:3000/attractions/{attraction_id}/videos</td>
+                        <td colspan="2" class="split">
+                            <table class="table response-fields nested-table">
+                                <tr><td>GET</td><td>Provides a collection of videos for a specific attraction.</td></tr>
+                                <tr><td>PUT</td><td>Update/add to the already existing videos for a specific attraction.</td></tr>
+                                <tr><td>POST</td><td>Allows to add videos for a specific attraction.</td></tr>  
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>Response Fields</h4>
+            <h6>For
+                <ul>
+                    <li>
+                        http://localhost:port/attractions/{attraction_id}
+                    </li>
+                    <li>
+                        http://localhost:3000/attractions/{attraction_id}/details
+                        <ul>
+                            <li>http://localhost:3000/attractions/{attraction_id}/details/nearby</li>
+                            <li>http://localhost:3000/attractions/{attraction_id}/details/similar</li>
+                        </ul>
+                    </li>
+                </ul>
+            </h6>
+            <table class="table response-fields">
+                <thead>
+                    <tr><th scope="col">Field</th><th scope="col">Type</th><th scope="col">Description</th></tr>
+                </thead>  
+                <tbody>
+                    <tr><th scope="row">id</th><td>int</td><td>unique id of the attraction in the database</td></tr>
+                    <tr><th scope="row">name</th><td>text</td><td>name of the attraction</td></tr>
+                    <tr><th scope="row">description</th><td>text</td><td>a brief description of the attraction</td></tr>
+                    <tr><th scope="row">contact_info</th><td>text</td><td>contact info such as phone and email of the attraction</td></tr>
+                    <tr><th scope="row">hours</th><td>text</td><td>the operating hours of the attraction</td></tr>
+                    <tr><th scope="row">admission</th><td>text</td><td>the admission fees for the attraction</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ATTRACTION BASIC INFO TAB CONTENT -->
+        <div class="tab-pane fade" id="basicInfoContent" role="tabpanel" aria-labelledby="basicInfoTab">
+            <h2>Attraction Basic Info</h2>
+            <p>Retrieve basic info for the specified attraction.</p>
+            <div class="endpoint">
+                <div class="http-methods">
+                    <div class="get http-method"><p>Get</p></div>
+                    <div class="put http-method"><p>Put</p></div>
+                    <div class="delete http-method"><p>Delete</p></div>
+                </div>
+                <code>
+                    http://localhost:3000/attractions/{attraction_id}
+                </code>
+            </div>
+            
+            <h4>Parameter</h4>
+            <!-- PARAMETER TABLE GENERATED IN INDEX.JS -->
+
+            <!-- TABS GENERATED IN INDEX.JS -->
+        </div>
+
+        <!-- ATTRACTION DETAILED INFO TAB CONTENT -->
+        <div class="tab-pane fade" id="detailedContent" role="tabpanel" aria-labelledby="detailedTab">
+            <h2>Attraction Detailed Info</h2>
+            <p>Provides a collection of details of attractions near the specified attraction.</p>
+            <div class="endpoint">
+                <div class="http-methods">
+                    <div class="get http-method"><p>Get</p></div>
+                    <div class="put http-method"><p>Put</p></div>
+                    <div class="post http-method"><p>Post</p></div>
+                </div>
+                <code>
+                    http://localhost:3000/attractions/{attraction_id}/details
+                </code>
+            </div>
+
+            <h4>Parameter</h4>
+            <!-- PARAMETER TABLE GENERATED IN INDEX.JS -->
+
+            <!-- TABS GENERATED IN INDEX.JS -->      
+        </div>
+
+        <!-- NEARBY ATTRACTIONS DETAILED INFO TAB CONTENT -->
+        <div class="tab-pane fade" id="nearbyDetailedContent" role="tabpanel" aria-labelledby="nearbyDetailedTab">
+            <h2>Nearby Attractions Detailed Info</h2>
+            <p>Retrieve basic info for the specified attraction.</p>
+            <div class="get http-method"><p>Get</p></div>
+            <code>
+                http://localhost:3000/attractions/{attraction_id}/details/nearby
+            </code>
+
+            <h4>Parameter</h4>
+            <table class="table parameter-table">
+                <thead>
+                    <tr>
+                        <th scope="col">Field</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Valid Values</th>
+                    </tr>
+                </thead>  
+                <tbody>
+                    <tr>
+                        <th scope="row">attraction_id</th>
+                        <td>int</td>
+                        <td>the ID of the attraction</td>
+                        <td>A valid ID from the database. Make a request to the All Attractions endpoint to see all of the available attractions, and their unique ID's in the database. </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>Example Request and Response</h4>
+            <div class="codeExample">
+                <code class="request">
+                    http://localhost:3000/attractions/18/details/nearby (18 corresponds to Palouse Falls State Park)
+                </code>        
+                <pre>
+                    <code class="response"><!-- Code inserted through codeExample.js --></code>
+                </pre>
+            </div>   
+        </div>
+
+        <!-- SIMILAR ATTRACTIONS DETAILED INFO TAB CONTENT -->
+        <div class="tab-pane fade" id="similarDetailedContent" role="tabpanel" aria-labelledby="similarDetailedTab">
+            <h2>Similar Attractions Detailed Info</h2>
+            <p>Provides a collection of details of attractions similar to the specified attraction.</p>
+            <div class="get http-method"><p>Get</p></div>
+            <code>
+                http://localhost:3000/attractions/{attraction_id}/details/similar
+            </code>
+
+            <h4>Parameter</h4>
+            <table class="table parameter-table">
+                <thead>
+                    <tr>
+                        <th scope="col">Field</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Valid Values</th>
+                    </tr>
+                </thead>  
+                <tbody>
+                    <tr>
+                        <th scope="row">attraction_id</th>
+                        <td>int</td>
+                        <td>the ID of the attraction</td>
+                        <td>A valid ID from the database. Make a request to the All Attractions endpoint to see all of the available attractions, and their unique ID's in the database. </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>Example Request and Response</h4>
+            <div class="codeExample">
+                <code class="request">
+                    http://localhost:3000/attractions/4/details/similar (4 corresponds to Steptoe Butte State Park)
+                </code>        
+                <pre>
+                    <code class="response"><!-- Code inserted through codeExample.js --></code>
+                </pre>
+            </div>  
+        </div>
+
+        <!-- ATTRACTION PHOTOS TAB CONTENT -->
+        <div class="tab-pane fade" id="imagesContent" role="tabpanel" aria-labelledby="imagesTab">
+            <h2>Attraction Images</h2>
+            <p>Provides a collection of images for a specific attraction.</p>
+            <div class="endpoint">
+                <div class="http-methods">
+                    <div class="get http-method"><p>Get</p></div>
+                    <div class="put http-method"><p>Put</p></div>
+                    <div class="post http-method"><p>Post</p></div>
+                </div>
+                <code>
+                    http://localhost:3000/attractions/{attraction_id}/images
+                </code>
+            </div>
+
+            <h4>Parameter</h4>
+            <!-- PARAMETER TABLE GENERATED IN INDEX.JS -->
+              
+            <!-- TABS GENERATED IN INDEX.JS -->      
+        </div>
+
+        <!-- ATTRACTION VIDEOS TAB CONTENT -->
+        <div class="tab-pane fade" id="videosContent" role="tabpanel" aria-labelledby="videosTab">
+            <h2>Attraction Videos</h2>
+            <p>Provides a collection of videos for a specific attraction.</p>
+
+            <div class="endpoint">
+                <div class="http-methods">
+                    <div class="get http-method"><p>Get</p></div>
+                    <div class="put http-method"><p>Put</p></div>
+                    <div class="post http-method"><p>Post</p></div>
+                </div>
+                <code>
+                    http://localhost:3000/attractions/{attraction_id}/videos
+                </code>
+            </div>
+
+            <h4>Parameter</h4>
+            <!-- PARAMETER TABLE GENERATED IN INDEX.JS -->
+
+            <!-- TABS GENERATED IN INDEX.JS -->      
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
